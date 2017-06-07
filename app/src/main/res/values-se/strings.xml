@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">KISS launcher</string>
     <string name="activity_setting">KISS-inställningar</string>
     <string name="ui_search_hint">Sök bland appar, kontakter, …</string>
@@ -146,7 +146,7 @@
     <string name="default_launcher_warn">Efter du valt standardstartsida kommer du skickas till dess framsida. Vill du fortsätta? Om du inte ser valet "Alltid" som alltid trycker du på hemknappen på din mobil EFTER du valt startsida.</string>
 
     <string name="items_title">%d föremål</string>
-    <string name="app_wil_restart">Du har ändrat några viktiga inställningar, appen startar nu om.</string>
+    <string name="app_will_restart">Du har ändrat några viktiga inställningar, appen startar nu om.</string>
     <string name="alternate_history_inputs">Andra historiktillägg</string>
     <string name="keyboard_options">Tangentbordsalternativ</string>
     <string name="misc">Övrigt</string>

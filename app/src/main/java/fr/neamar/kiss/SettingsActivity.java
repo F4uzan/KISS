@@ -3,6 +3,7 @@ package fr.neamar.kiss;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.ListPreference;
@@ -11,6 +12,7 @@ import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceManager;
+import android.preference.PreferenceScreen;
 import android.widget.Toast;
 
 import java.util.Arrays;
@@ -28,7 +30,8 @@ public class SettingsActivity extends PreferenceActivity implements
         SharedPreferences.OnSharedPreferenceChangeListener {
 
     // Those settings require the app to restart
-    final static private String requireRestartSettings = "enable-keyboard-workaround force-portrait theme";
+    final static private String requireRestartSettings = "enable-keyboard-workaround force-portrait primary-color";
+    final static private String requireInstantRestart = "theme notification-bar-color";
 
     private boolean requireFullRestart = false;
 
@@ -66,6 +69,15 @@ public class SettingsActivity extends PreferenceActivity implements
         addExcludedAppSettings(prefs);
 
         addSearchProvidersSelector(prefs);
+
+        UiTweaks.updateThemePrimaryColor(this);
+
+        // Notification color can't be updated before Lollipop
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+            PreferenceScreen screen = (PreferenceScreen) findPreference("ui-holder");
+            Preference pref = findPreference("notification-bar-color");
+            screen.removePreference(pref);
+        }
     }
 
     private void loadExcludedAppsToPreference(MultiSelectListPreference multiSelectList) {
@@ -156,11 +168,12 @@ public class SettingsActivity extends PreferenceActivity implements
 
         if (requireRestartSettings.contains(key)) {
             requireFullRestart = true;
+        }
 
-            if (key.equalsIgnoreCase("theme")) {
-                finish();
-                return;
-            }
+        if (requireInstantRestart.contains(key)) {
+            requireFullRestart = true;
+            finish();
+            return;
         }
 
         if ("enable-sms-history".equals(key) || "enable-phone-history".equals(key)) {
@@ -178,7 +191,7 @@ public class SettingsActivity extends PreferenceActivity implements
         prefs.unregisterOnSharedPreferenceChangeListener(this);
 
         if (requireFullRestart) {
-            Toast.makeText(this, R.string.app_wil_restart, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.app_will_restart, Toast.LENGTH_SHORT).show();
             SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
             prefs.edit().putBoolean("require-layout-update", true).apply();
 
@@ -202,6 +215,24 @@ public class SettingsActivity extends PreferenceActivity implements
         int historyLength = KissApplication.getDataHandler(this).getHistoryLength();
         if (historyLength > 5) {
             findPreference("reset").setSummary(String.format(getString(R.string.items_title), historyLength));
+        }
+
+
+        // Only display the "rate the app" preference if the user has been using KISS long enough to enjoy it ;)
+        Preference rateApp = findPreference("rate-app");
+        if (historyLength < 300) {
+            getPreferenceScreen().removePreference(rateApp);
+        } else {
+            rateApp.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    intent.setData(Uri.parse("market://details?id=" + getApplicationContext().getPackageName()));
+                    startActivity(intent);
+
+                    return true;
+                }
+            });
         }
     }
 

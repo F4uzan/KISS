@@ -34,6 +34,7 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 import android.widget.Toast;
@@ -253,6 +254,7 @@ public class MainActivity extends Activity implements QueryInterface, KeyboardSc
             }
         });
 
+        registerLongClickOnFavorites();
         searchEditText = (EditText) findViewById(R.id.searchEditText);
 
         // Listen to changes
@@ -281,7 +283,7 @@ public class MainActivity extends Activity implements QueryInterface, KeyboardSc
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 RecordAdapter adapter = ((RecordAdapter) list.getAdapter());
 
-                adapter.onClick(adapter.getCount() - 1, null);
+                adapter.onClick(adapter.getCount() - 1, v);
 
                 return true;
             }
@@ -318,6 +320,36 @@ public class MainActivity extends Activity implements QueryInterface, KeyboardSc
 
         // Hide the "X" after the text field, instead displaying the menu button
         displayClearOnInput();
+
+        UiTweaks.updateThemePrimaryColor(this);
+        UiTweaks.tintResources(this);
+    }
+
+    private void registerLongClickOnFavorites() {
+        View.OnLongClickListener listener = new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+
+                int favNumber = Integer.parseInt((String) view.getTag());
+                ArrayList<Pojo> favorites = KissApplication.getDataHandler(MainActivity.this).getFavorites(tryToRetrieve);
+                if (favNumber >= favorites.size()) {
+                    // Clicking on a favorite before everything is loaded.
+                    Log.i(TAG, "Long clicking on an unitialized favorite.");
+                    return false;
+                }
+                // Favorites handling
+                Pojo pojo = favorites.get(favNumber);
+                final Result result = Result.fromPojo(MainActivity.this, pojo);
+                result.getPopupMenu(MainActivity.this, adapter, view).show();
+                return true;
+            }
+        };
+        for (int id : favBarIds) {
+            findViewById(id).setOnLongClickListener(listener);
+        }
+        for (int id : favsIds) {
+            findViewById(id).setOnLongClickListener(listener);
+        }
     }
 
     private void adjustInputType(String currentText) {
@@ -340,7 +372,7 @@ public class MainActivity extends Activity implements QueryInterface, KeyboardSc
         View quickFavoritesBar = findViewById(R.id.favoritesBar);
         if (searchEditText.getText().toString().length() == 0
                 && prefs.getBoolean("enable-favorites-bar", false)) {
-            if ((!prefs.getBoolean("favorites-hide", false) || touched)) {
+            if((!prefs.getBoolean("favorites-hide", false) || touched)) {
                 quickFavoritesBar.setVisibility(View.VISIBLE);
             }
 
@@ -375,18 +407,12 @@ public class MainActivity extends Activity implements QueryInterface, KeyboardSc
         Log.i(TAG, "Resuming KISS");
 
         if (prefs.getBoolean("require-layout-update", false)) {
+            super.onResume();
             Log.i(TAG, "Restarting app after setting changes");
             // Restart current activity to refresh view, since some preferences
             // may require using a new UI
-            prefs.edit().putBoolean("require-layout-update", false).commit();
-            Intent i = new Intent(this, getClass());
-            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK
-                    | Intent.FLAG_ACTIVITY_NO_ANIMATION);
-            finish();
-            overridePendingTransition(0, 0);
-            startActivity(i);
-            overridePendingTransition(0, 0);
-            super.onResume();
+            prefs.edit().putBoolean("require-layout-update", false).apply();
+            this.recreate();
             return;
         }
 
@@ -573,7 +599,7 @@ public class MainActivity extends Activity implements QueryInterface, KeyboardSc
         Pojo pojo = favorites.get(favNumber);
         final Result result = Result.fromPojo(MainActivity.this, pojo);
 
-        result.fastLaunch(MainActivity.this);
+        result.fastLaunch(MainActivity.this, favorite);
     }
 
     private void displayClearOnInput() {
@@ -800,7 +826,6 @@ public class MainActivity extends Activity implements QueryInterface, KeyboardSc
 
     /**
      * Check if history / search or app list is visible
-     *
      * @return true of history, false on app list
      */
     public boolean isOnSearchView() {

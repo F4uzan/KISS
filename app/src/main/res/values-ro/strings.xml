@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Lansator KISS</string>
     <string name="activity_setting">Setari KISS</string>
     <string name="ui_search_hint">Cauta aplicatii, contacte, …</string>
@@ -138,7 +138,7 @@
     <string name="settings_accessibility">Accesibilitate</string>
     <string name="keyboard_workaround_name">Rezolvare sugestii tastatura</string>
     <string name="keyboard_workaround_desc">Previne tastaturile problematice (precum SwiftKey™) sa mai arate sugestii</string>
-    <string name="app_wil_restart">S-au schimbat setari importante, aplicatia va reporni.</string>
+    <string name="app_will_restart">S-au schimbat setari importante, aplicatia va reporni.</string>
     <string name="alternate_history_inputs">Surse alternative istoric</string>
     <string name="keyboard_options">Optiuni tastatura</string>
     <string name="misc">Diverse</string>
@@ -162,4 +162,19 @@ Nota: Daca nu vedeti optiunea \"Intotdeauna\", apasati butonul Acasa dupa select
     <string name="tags_visible">Arata etichete aplicatii</string>
     <string name="share">Partajeaza cu...</string>
 
-</resources>
+<string name="main_color">Culoare primara</string>
+    <string name="notification_bar_color">Culoare bara notificare</string>
+
+
+    <string name="color_picker_default_title" msgid="1248663997452044787">"Selectați o culoare"</string>
+    <string name="color_swatch_description" msgid="2883438431173736180">"Culoarea <xliff:g id="COLOR_INDEX">%1$d</xliff:g>"</string>
+    <string name="color_swatch_description_selected" msgid="5020921249944943124">"Culoarea <xliff:g id="COLOR_INDEX">%1$d</xliff:g> este selectată"</string>
+<string name="number_ofdisplay_items">Numarul maxim de rezultate in cautare si istoric</string>
+
+    <string name="color_transparent_dark">Transparent întunecat</string>
+    <string name="color_transparent_white">Transparent alb</string>
+    <string name="color_transparent">Transparent</string>
+
+
+
+    </resources>

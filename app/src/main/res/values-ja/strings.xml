@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">KISS ランチャー</string>
     <string name="activity_setting">KISS 設定</string>
     <string name="ui_search_hint">アプリ、連絡先、などを検索…</string>
@@ -143,7 +143,7 @@
     <string name="settings_accessibility">アクセシビリティ</string>
     <string name="keyboard_workaround_name">キーボード入力候補の修正</string>
     <string name="keyboard_workaround_desc">(SwiftKey™ のような) 壊れたソフトキーボードが入力候補を表示するのを防止します</string>
-    <string name="app_wil_restart">いくつかの重要な設定を変更しました。アプリを再起動します。</string>
+    <string name="app_will_restart">いくつかの重要な設定を変更しました。アプリを再起動します。</string>
     <string name="alternate_history_inputs">代替の履歴入力</string>
     <string name="keyboard_options">キーボード オプション</string>
     <string name="misc">その他</string>
@@ -167,4 +167,18 @@
     <string name="tags_visible">アプリケーション タグを表示</string>
     <string name="share">共有...</string>
 
-</resources>
+<string name="main_color">プライマリー色</string>
+    <string name="notification_bar_color">通知バーの色</string>
+<string name="number_ofdisplay_items">検索と履歴の結果の最大数</string>
+
+
+    <string name="color_picker_default_title" msgid="1248663997452044787">"色の選択"</string>
+    <string name="color_swatch_description" msgid="2883438431173736180">"色<xliff:g id="COLOR_INDEX">%1$d</xliff:g>"</string>
+    <string name="color_swatch_description_selected" msgid="5020921249944943124">"色<xliff:g id="COLOR_INDEX">%1$d</xliff:g>を選択しました"</string>
+    <string name="color_transparent_dark">透過ダーク</string>
+    <string name="color_transparent_white">透過ホワイト</string>
+    <string name="color_transparent">透過</string>
+
+
+
+    </resources>

@@ -19,6 +19,14 @@
             android:key="reset-excluded-apps"
             android:order="12"
             android:title="@string/reset_excluded_apps_name" />
+        <EditTextPreference
+            android:defaultValue="25"
+            android:key="number-of-display-elements"
+            android:inputType="number"
+            android:order="45"
+            android:title="@string/number_ofdisplay_items"
+            android:textColor="?attr/searchColor"
+            />
         <PreferenceCategory
             android:order="50"
             android:title="@string/alternate_history_inputs">
@@ -41,7 +49,7 @@
                 android:title="@string/exclude_favorites" />
         </PreferenceCategory>
     </PreferenceScreen>
-    <PreferenceScreen android:title="@string/title_ui">
+    <PreferenceScreen android:title="@string/title_ui" android:key="ui-holder">
         <ListPreference
             android:defaultValue="light"
             android:entries="@array/themesEntries"
@@ -52,6 +60,12 @@
             android:defaultValue="default"
             android:key="icons-pack"
             android:title="@string/icons_pack_name" />
+        <fr.neamar.kiss.preference.ColorPreference
+            android:key="notification-bar-color"
+            android:title="@string/notification_bar_color" />
+        <fr.neamar.kiss.preference.ColorPreference
+            android:key="primary-color"
+            android:title="@string/main_color" />
         <PreferenceCategory android:title="@string/keyboard_options">
             <fr.neamar.kiss.SwitchPreference
                 android:defaultValue="false"
@@ -138,7 +152,7 @@
         <fr.neamar.kiss.preference.DefaultLauncherPreference
             android:dialogMessage="@string/default_launcher_warn"
             android:key="default-launcher"
-            android:title="@string/default_launcher_title"/>
+            android:title="@string/default_launcher_title" />
         <ListPreference
             android:defaultValue="recency"
             android:entries="@array/historyModeEntries"
@@ -161,4 +175,8 @@
             android:summary="@string/restart_desc"
             android:title="@string/restart_name" />
     </PreferenceScreen>
+    <Preference
+        android:key="rate-app"
+        android:title="Rate the app">
+    </Preference>
 </PreferenceScreen>

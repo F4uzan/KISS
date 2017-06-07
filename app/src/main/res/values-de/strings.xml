@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">KISS Launcher</string>
     <string name="activity_setting">KISS-Einstellungen</string>
     <string name="ui_search_hint">Nach Apps, Kontakten, … suchen</string>
@@ -14,7 +14,7 @@
     <string name="menu_settings">Geräteeinstellungen</string>
     <string name="no_favorites">Keine Favoriten vorhanden. Einträge durch langes Drücken hinzufügen.</string>
 
-    <string name="ui_empty_1">Suche nach allem starten</string>
+    <string name="ui_empty_1">Nach etwas suchen</string>
     <string name="ui_empty_1_sub">Apps, Kontakte, Einstellungen, …</string>
     <string name="ui_empty_2">Immer Ihren Verlauf sehen</string>
     <string name="ui_empty_2_sub">Für schnellen Zugriff</string>
@@ -149,26 +149,39 @@
     <string name="keyboard_options">Tastatureinstellungen</string>
     <string name="misc">Verschiedenes</string>
 
-<string name="app_wil_restart">Wichtige Einstellungen wurden verändert; App wird neu gestartet.</string>
+<string name="app_will_restart">Wichtige Einstellungen wurden verändert; App wird neu gestartet.</string>
     <string name="alternate_history_inputs">Zusätzliche Quellen für Verlaufseinträge</string>
     <string name="settings_accessibility">Bedienungshilfen</string>
     <string name="title_settings">Einstellungen</string>
     <string name="settings_sound">Klang und Lautstärke</string>
     <string name="settings_display">Bildschirm</string>
     <string name="ui_item_visit">»%1$s« besuchen</string>
-    <string name="menu_tags_edit">Tags hinzufügen/bearbeiten</string>
-    <string name="tags_add_title">Leerzeichen-getrennte Tags eintragen</string>
+    <string name="menu_tags_edit">Schlagworte hinzufügen/bearbeiten</string>
+    <string name="tags_add_title">Leerzeichen getrennte Schlagworte hinzufügen</string>
     <string name="tags_confirmation_added">Schlagwort wurde festgelegt</string>
     <string name="toast_favorites_removed">%s aus den Favoriten entfernt</string>
     <string name="menu_favorites_remove">Aus Favoritenleiste entfernen</string>
 
 <string name="stub_app_tag">Schlagwortbeispiel</string>
-    <string name="default_launcher_title">Standard-Launcher ändern</string>
+    <string name="default_launcher_title">Vorgabe-Launcher ändern</string>
     <string name="default_launcher_warn">Nach der Auswahl des Vorgabe-Launchers, werden Sie auf dessen Startbildschirm weitergeleitet. Sind Sie sicher, dass Sie fortfahren möchten?
 
 Hinweis: wenn die Option »Immer« nicht angezeigt wird, bitte die Starttaste nach der Auswahl Ihres gewünschten Launchers drücken.</string>
 
-    <string name="share">Teilen mit…</string>
+    <string name="share">Teilen mit …</string>
 
-<string name="tags_visible">Tags bei App-Einträgen anzeigen</string>
+<string name="tags_visible">Anwendungsschlagworte anzeigen</string>
+    <string name="notification_bar_color">Farbe der Benachrichtigungsleiste</string>
+<string name="main_color">Grundfarbe</string>
+    <string name="number_ofdisplay_items">Max. Anzahl an Suchergebnissen und Verlaufseinträgen</string>
+
+    <string name="color_picker_default_title" msgid="1248663997452044787">Farbe auswählen</string>
+    <string name="color_swatch_description" msgid="2883438431173736180">"Farbe <xliff:g id="COLOR_INDEX">%1$d</xliff:g>"</string>
+    <string name="color_swatch_description_selected" msgid="5020921249944943124">"Farbe <xliff:g id="COLOR_INDEX">%1$d</xliff:g> ausgewählt"</string>
+<string name="color_transparent_dark">Durchsichtigdunkel</string>
+    <string name="color_transparent_white">Durchsichtigweiß</string>
+    <string name="color_transparent">Durchsichtig</string>
+
+
+
     </resources>

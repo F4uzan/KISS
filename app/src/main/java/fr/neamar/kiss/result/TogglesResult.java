@@ -43,7 +43,7 @@ public class TogglesResult extends Result {
         String togglePrefix = "<small><small>" + context.getString(R.string.toggles_prefix) + "</small></small>";
 
         TextView toggleName = (TextView) v.findViewById(R.id.item_toggle_name);
-        toggleName.setText(TextUtils.concat(Html.fromHtml(togglePrefix), enrichText(togglePojo.displayName)));
+        toggleName.setText(TextUtils.concat(Html.fromHtml(togglePrefix), enrichText(togglePojo.displayName, context)));
 
         ImageView toggleIcon = (ImageView) v.findViewById(R.id.item_toggle_icon);
         toggleIcon.setImageDrawable(context.getResources().getDrawable(togglePojo.icon));
@@ -108,7 +108,17 @@ public class TogglesResult extends Result {
 
     @Override
     public void doLaunch(Context context, View v) {
-        if (v == null) {
+        CompoundButton toggleButton = null;
+        if (v != null) {
+            toggleButton = (CompoundButton) v.findViewById(R.id.item_toggle_action_toggle);
+        }
+
+        if (toggleButton != null) {
+            // Use the handler to check or un-check button
+            if (toggleButton.isEnabled()) {
+                toggleButton.performClick();
+            }
+        } else {
             //in case it is pinned on kissbar
             if (togglesHandler == null) {
                 togglesHandler = new TogglesHandler(context);
@@ -123,14 +133,6 @@ public class TogglesResult extends Result {
             //show toast to inform user what the state is
             Toast.makeText(context, String.format(msg, " " + this.pojo.displayName), Toast.LENGTH_SHORT).show();
 
-        }
-        else {
-            // Use the handler to check or un-check button
-            final CompoundButton toggleButton = (CompoundButton) v
-                    .findViewById(R.id.item_toggle_action_toggle);
-            if (toggleButton.isEnabled()) {
-                toggleButton.performClick();
-            }
         }
     }
 

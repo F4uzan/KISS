@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <string name="app_name">KISS Launcher</string>
     <string name="activity_setting">Impostazioni di KISS</string>
@@ -137,7 +137,7 @@
     <string name="restart_warn">Sei sicuro di voler riavviare KISS? Se KISS non è il tuo launcher predefinito, verrà solamente terminato.</string>
 
     <string name="items_title">%d elementi</string>
-    <string name="app_wil_restart">Hai modificato delle impostazioni importanti, pertanto KISS verrà riavviato.</string>
+    <string name="app_will_restart">Hai modificato delle impostazioni importanti, pertanto KISS verrà riavviato.</string>
     <string name="alternate_history_inputs">Elementi aggiuntivi</string>
     <string name="keyboard_options">Tastiera e opzioni d\'immissione</string>
     <string name="misc">Altro</string>
@@ -160,4 +160,19 @@ Nota: se non dovesse apparire l\'opzione \'Sempre\', premi il tasto Home una vol
     <string name="tags_visible">Mostra i tag per le applicazioni</string>
     <string name="share">Condividi...</string>
 
-</resources>
+<string name="main_color">Colore principale</string>
+    <string name="notification_bar_color">Colore barra di notifica</string>
+
+    
+    <string name="color_picker_default_title" msgid="1248663997452044787">"Seleziona un colore"</string>
+    <string name="color_swatch_description" msgid="2883438431173736180">"Colore <xliff:g id="COLOR_INDEX">%1$d</xliff:g>"</string>
+    <string name="color_swatch_description_selected" msgid="5020921249944943124">"Colore selezionato: <xliff:g id="COLOR_INDEX">%1$d</xliff:g>"</string>
+<string name="color_transparent">Trasparente</string>
+
+
+
+    <string name="color_transparent_dark">Trasparente scuro</string>
+    <string name="color_transparent_white">Trasparente bianco</string>
+    <string name="number_ofdisplay_items">Numero massimo di risultati di ricerca e nella cronologia</string>
+
+    </resources>
